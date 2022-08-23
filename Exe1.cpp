@@ -2,47 +2,99 @@
 //
 
 #include <iostream>
+#include <cstring>
 
-int getSumUnitNumber(int number, int unitStart) {
-	int unitNumber = (number % unitStart * 10) / unitStart;
+int getSumUnitNumber(int number, int unitStart)
+{
+	int unitNumber = (number % (unitStart * 10)) / unitStart;
 
-
-	if (number == number % unitStart) {
+	if (number == number % unitStart)
+	{
 		return unitNumber;
 	}
-	else {
+	else
+	{
 		return unitNumber + getSumUnitNumber(number, unitStart * 10);
 	}
 }
 
-int calcFactorial(int number) {
-	if (number == 0) {
+int calcFactorial(int number)
+{
+	if (number == 0)
+	{
 		return 1;
 	}
-	else {
+	else
+	{
 		return number * calcFactorial(number - 1);
+	}
+}
+
+void arrDump(int arr[], int size)
+{
+	printf("Arr dump: [ ");
+
+	for (int i = 0; i < size; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+
+	printf("]");
+}
+
+void sortArrNumber(int arr[], int size)
+{
+	for (int i = 0; i < size - 1; i++)
+	{
+		int jMin = i;
+		for (int j = i + 1; j < size; j++)
+		{
+			if (arr[j] < arr[jMin])
+			{
+				jMin = j;
+			}
+		}
+
+		if (jMin != i)
+		{
+			std::swap(arr[i], arr[jMin]);
+		}
+	}
+}
+
+void strRev(char str[])
+{
+	size_t strLen = strlen(str);
+	char temp;
+
+	for (int i = 0; i < strLen / 2; i++)
+	{
+		temp = str[i];
+		str[i] = str[strLen - i - 1];
+		str[strLen - i - 1] = temp;
+		// std::swap(, );
 	}
 }
 
 int main()
 {
-	//Exe 1
+	// Exe 1
 
-	//int number;
+	// int number;
 
-	//printf("Nhap so N: ");
-	//scanf_s("%d", &number);
+	// printf("Nhap so N: ");
+	// scanf_s("%d", &number);
 
-	//if (number >= 20 && number <= 50) {
+	// if (number >= 20 && number <= 50) {
 	//	printf("%d nam trong khoang 20 -> 50", number);
 	//	return 1;
-	//};
+	// };
 
-	//printf("%d khong nam trong khoang 20 -> 50", number);
+	// printf("%d khong nam trong khoang 20 -> 50", number);
 
 	//===================================================
 
-	//Exe 2
+	// Exe 2
 
 	/*int number;
 
@@ -62,41 +114,48 @@ int main()
 
 	//===================================================
 
-	//Exe 3
+	// Exe 3
 
-	//int number;
+	// int number;
 
-	//printf("Nhap so N: ");
-	//scanf_s("%d", &number);
+	// printf("Nhap so N: ");
+	// scanf_s("%d", &number);
 
-	//int result = getSumUnitNumber(number, 1);
+	// int result = getSumUnitNumber(number, 1);
 
-	//printf("Tong tat ca cac so cua so %d la: %d", number, result);
-
-
-	//===================================================
-
-	//Exe 4
-
-	/*char str[50];
-	int countNumber = 0, countCharacter = 0;
-
-	printf("Nhap chuoi bat ki: ");
-
-	scanf_s("%s", str, 50);
-
-	for (int i = 0; i < sizeof(str); i++)
-	{
-		if (typeid(str[i]).name == "d") {
-
-		}
-	}
-
-	*/
+	// printf("Tong tat ca cac so cua so %d la: %d", number, result);
 
 	//===================================================
 
-	//Exe 5
+	// Exe 4
+
+	// char str[50] = "";
+	// int countNumber = 0, countCharacter = 0;
+
+	// printf("Nhap chuoi bat ki: ");
+
+	// fgets(str, sizeof(str), stdin);
+
+	// str[strlen(str) - 1] = '\0';
+
+	// for (int i = 0; i < strlen(str); i++)
+	// {
+	// 	if (isdigit(str[i]))
+	// 	{
+	// 		countNumber++;
+	// 	}
+	// 	else
+	// 	{
+	// 		countCharacter++;
+	// 	}
+	// }
+
+	// printf("So chu cai trong chuoi %s la: %d\n", str, countCharacter);
+	// printf("So chu so trong chuoi %s la: %d\n", str, countNumber);
+
+	//===================================================
+
+	// Exe 5
 
 	/*int number;
 
@@ -107,7 +166,7 @@ int main()
 
 	//===================================================
 
-	//Exe 6
+	// Exe 6
 
 	/*int numberN;
 	int numberM;
@@ -130,7 +189,82 @@ int main()
 
 	//===================================================
 
-    //Exe 7
+	// Exe 7
 
+	// int sizeArr;
+	// int numbers[100];
+
+	// printf("Nhap so N: ");
+	// scanf("%d", &sizeArr);
+
+	// for (int i = 0; i < sizeArr; i++)
+	// {
+	// 	printf("Nhap gia tri phan tu %d : ", i);
+	// 	scanf("%d", &numbers[i]);
+	// }
+
+	// sortArrNumber(numbers, sizeArr);
+
+	// arrDump(numbers, sizeArr);
+
+	//===================================================
+
+	// Exe 8
+
+	// int sizeArr;
+	// int numbers[100];
+	// int numbersArrAsc[100];
+	// int numbersArrAscSize = 0;
+
+	// printf("Nhap so N: ");
+	// scanf("%d", &sizeArr);
+
+	// for (int i = 0; i < sizeArr; i++)
+	// {
+	// 	printf("Nhap gia tri phan tu %d : ", i);
+	// 	scanf("%d", &numbers[i]);
+	// }
+
+	// for (int j = 0; j < sizeArr; j++)
+	// {
+	// 	numbersArrAsc[j] = numbers[j];
+	// 	numbersArrAscSize++;
+	// 	if (numbers[j] > numbers[j + 1])
+	// 		break;
+	// }
+
+	// arrDump(numbersArrAsc, numbersArrAscSize);
+
+	//===================================================
+
+	// Exe 9
+
+	// char fullname[50] = "";
+
+	// printf("Nhap ho va ten cua ban: ");
+	// fgets(fullname, sizeof(fullname), stdin);
+
+	// fullname[strlen(fullname) - 1] = '\0';
+
+	// char *token = strtok(fullname, " ");
+
+	// printf("Ho va ten dao nguoc la: ");
+
+	// while (token != NULL)
+	// {
+	// 	strRev(token);
+	// 	printf("%s ", token);
+	// 	token = strtok(NULL, " ");
+	// }
+
+	//===================================================
+
+	// Exe 10
+
+	// char fullname[50] = "";
+
+	// printf("Nhap ho va ten cua ban: ");
+	// fgets(fullname, sizeof(fullname), stdin);
+
+	// fullname[strlen(fullname) - 1] = '\0';
 }
-
